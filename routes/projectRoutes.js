@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 //Create Project
-router.post("/createProject", async (req, res) => {
+router.post("/create", async (req, res) => {
   try {
     const { title, userId } = req.body;
     const created_date = new Date();
@@ -22,12 +22,12 @@ router.post("/createProject", async (req, res) => {
 });
 
 //Get all projects of the user
-router.get("/fetchProjects", async (req, res) => {
+router.get("/fetch", async (req, res) => {
   try {
     const { userId } = req.body;
     const connection = req.app.locals.connection;
     const [result] = await connection.query(
-      "SELECT * FROM project WHERE user_id = ?",
+      "SELECT * FROM project WHERE user_id = ? ORDER BY created_date DESC",
       [userId]
     );
 
@@ -41,7 +41,7 @@ router.get("/fetchProjects", async (req, res) => {
 });
 
 //Update Project
-router.post("/updateProject", async (req, res) => {
+router.post("/update", async (req, res) => {
   try {
     const { title, projectId } = req.body;
     const connection = req.app.locals.connection;
@@ -61,7 +61,7 @@ router.post("/updateProject", async (req, res) => {
 });
 
 //Delete Project
-router.delete("/deleteProject", async (req, res) => {
+router.delete("/delete", async (req, res) => {
   try {
     const { projectId } = req.body;
     const connection = req.app.locals.connection;

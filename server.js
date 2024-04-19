@@ -1,11 +1,11 @@
 require("dotenv").config();
 
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const mysql = require("mysql2/promise");
 
 const app = express();
-app.use(cors()); 
+app.use(cors());
 app.use(express.json());
 
 mysql
@@ -26,9 +26,9 @@ mysql
     console.log("Successfully connected to MySQL database!");
     app.locals.connection = connection;
 
-    //Importing userRoutes
-    app.use('/user', require('./routes/userRoutes'));
-
+    //Importing Routes
+    app.use("/user", require("./routes/userRoutes"));
+    app.use("/project", require("./routes/projectRoutes"));
 
     app.use((err, req, res, next) => {
       console.error(err.stack);

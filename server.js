@@ -26,6 +26,10 @@ mysql
     console.log("Successfully connected to MySQL database!");
     app.locals.connection = connection;
 
+    //Importing userRoutes
+    app.use('/user', require('./routes/userRoutes'));
+
+
     app.use((err, req, res, next) => {
       console.error(err.stack);
       res.status(500).send("Something broke!");

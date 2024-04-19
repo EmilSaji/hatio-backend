@@ -5,7 +5,7 @@ const cors = require("cors");
 const mysql = require("mysql2/promise");
 
 const app = express();
-app.use(cors());
+app.use(cors({ methods: "GET,POST,PUT,DELETE" }));
 app.use(express.json());
 
 mysql
@@ -30,7 +30,6 @@ mysql
     app.use("/user", require("./routes/userRoutes"));
     app.use("/project", require("./routes/projectRoutes"));
     app.use("/todo", require("./routes/todoRoutes"));
-
 
     app.use((err, req, res, next) => {
       console.error(err.stack);

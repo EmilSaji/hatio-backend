@@ -22,15 +22,14 @@ router.post("/create", async (req, res) => {
 });
 
 //Get all projects of the user
-router.get("/fetch", async (req, res) => {
+router.get("/fetch/:userId", async (req, res) => {
   try {
-    const { userId } = req.body;
+    const { userId } = req.params;
     const connection = req.app.locals.connection;
     const [result] = await connection.query(
       "SELECT * FROM project WHERE user_id = ? ORDER BY created_date DESC",
       [userId]
     );
-
     res.json({
       message: "Projects fetched successfully",
       projects: result,

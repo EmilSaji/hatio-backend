@@ -23,7 +23,7 @@ router.post("/create", async (req, res) => {
 });
 
 //fetch todo based on project id
-router.get("/fetch", async (req, res) => {
+router.post("/fetch", async (req, res) => {
   try {
     const { projectId } = req.body;
     const connection = req.app.locals.connection;

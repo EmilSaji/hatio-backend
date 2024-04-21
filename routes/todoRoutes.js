@@ -31,17 +31,10 @@ router.post("/fetch", async (req, res) => {
       "SELECT * FROM todo WHERE project_id = ? ORDER BY created_date DESC",
       [projectId]
     );
-
-    if (todos.length === 0) {
-      res
-        .status(404)
-        .json({ message: "No todos found for the given project id" });
-    } else {
-      res.json({
-        message: "Todos fetched successfully",
-        todos: todos,
-      });
-    }
+    res.json({
+      message: "Todos fetched successfully",
+      todos: todos,
+    });
   } catch (err) {
     res.status(500).json({ message: "Server error", error: err });
   }

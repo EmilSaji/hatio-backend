@@ -35,5 +35,5 @@ Before you begin, ensure you have met the following requirements:
 
 ### Instructions
 
-Start the server first. If there are no errors, you'll see a message showing the connected port and the database connection status. After that, start the frontend of the app. 
+Start the server first. If there are no errors, you'll see a log message in console showing the connected port and the database connection status. After that, start the frontend of the app. 
 [Frontend](https://github.com/EmilSaji/hatio-frontend)
